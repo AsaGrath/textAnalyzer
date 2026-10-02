@@ -8,7 +8,6 @@ public class TextCounter {
     private int lineCount = 0;
 
     public void textCounter(String text) {
-
         charCount += text.length();
         lineCount++;
 
@@ -24,4 +23,5 @@ public class TextCounter {
     }
 
 }
+
 

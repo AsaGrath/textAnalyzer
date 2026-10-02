@@ -12,7 +12,7 @@ public class TextReader {
 
         String text = "";
 
-        //Läs in text från consollen tills användaren skriver stop
+        //Läs in text från consolen tills användaren skriver stop
         System.out.println("skriv din text här. Skriv stop för att avsluta ");
         while (!text.equals("stop")) {
             text = scan.nextLine();
