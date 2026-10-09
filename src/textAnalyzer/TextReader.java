@@ -9,28 +9,25 @@ public class TextReader {
         Scanner scan = new Scanner(System.in);
         TextCounter counter = new TextCounter();
 
-
-        String text = "";
-        //String words="";
-
-        //Läs in text från consolen tills användaren skriver stop
+        //Läs in text från console. Loopen körs till användaren skriver stop
         System.out.println("skriv din text här. Skriv stop för att avsluta ");
-        while (!text.equals("stop")) {
-            text = scan.nextLine();
+        while (true) {
+            String text = scan.nextLine();
 
-
-            //När användare skriver stop ska den räkna antal tecken och rader.
-            // Om text inte är stop räkna. Vid stop slutar den räkna
-            if (!text.equals("stop")) {
+            if (!counter.isRunning(text)) {
+                break;
+            } else {
                 counter.textCounter(text);
-
             }
+
         }
+        //Skriv ut allt som räknats
         System.out.println("Antal tecken: " + counter.getCharCount());
         System.out.println("Antal rader: " + counter.getLineCount());
         System.out.println("Antal ord: " + counter.getWordCount());
         System.out.println("Längsta ordet: " + counter.getWordLength());
 
     }
-
 }
+
+

@@ -14,10 +14,10 @@ public class TestTextAnalyzer {
         TextCounter counter = new TextCounter();
 
         //Act
-        counter.textCounter("hej, jag heter Åsa");
+        counter.textCounter("här är min text");
 
         //Assert
-        assertEquals(18, counter.getCharCount());
+        assertEquals(15, counter.getCharCount());
 
     }
 
@@ -26,12 +26,9 @@ public class TestTextAnalyzer {
 
         TextCounter counter = new TextCounter();
 
-        counter.textCounter("hej");
-        counter.textCounter("på");
-        counter.textCounter("dig");
-        counter.textCounter("!");
+        counter.textCounter("hej på dig!");
 
-        assertEquals(4, counter.getLineCount());
+        assertEquals(1, counter.getLineCount());
 
     }
 
@@ -86,30 +83,43 @@ public class TestTextAnalyzer {
 
         TextCounter counter = new TextCounter();
 
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-        counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
-
-
-        assertEquals(12, counter.getLineCount());
+        for (int i = 0; i < 20; i++) {
+            counter.textCounter("Hej! Det här är en lång text som testar både STORA och små bokstäver.");
+        }
+        assertEquals(20, counter.getLineCount());
 
     }
 
+    @Test
+    public void testWordCount() {
 
-    //Räkna tecken
-    //Räkna rader
-    //Specialtecken
-    //Lämna tomt
-    //kort test
-    //långt test
-    // bara mellanslag ?
-}
+        TextCounter counter = new TextCounter();
+
+        counter.textCounter("Här är min text");
+
+        assertEquals(4, counter.getWordCount());
+
+    }
+
+    @Test
+    public void testWordLength() {
+
+        TextCounter counter = new TextCounter();
+
+        counter.textCounter("Här är min längsta text");
+
+        assertEquals("längsta", counter.getWordLength());
+
+    }
+
+    @Test
+    public void testIsRunning() {
+
+        TextCounter counter = new TextCounter();
+
+        counter.textCounter("här är min text");
+
+        assertEquals(true, counter.isRunning("här är min text"));
+
+    }
+ }
